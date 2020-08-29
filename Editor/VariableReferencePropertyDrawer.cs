@@ -18,14 +18,14 @@ public class VariableReferencePropertyDrawer<refT, T> : PropertyDrawer where ref
 		var validRef = refVar != null;
 		if( validRef ) oldValue = refVar.Value;
 		EditorGUI.BeginDisabledGroup( validRef && _locked );
-		var firstRectW = EditorGUIUtility.labelWidth + VALUE_FIELD_WIDTH;
+		var firstRectW = EditorGUIUtility.labelWidth + VALUE_FIELD_WIDTH + 24;
 
-		var fieldArea = area.RequestLeft( firstRectW + 24 - ( validRef ? LOCK_BUTTON_WIDTH : 0 ) );
-		property.DebugWatcherField<T>( fieldArea.RequestRight( 20 ) );
+		var fieldArea = area.RequestLeft( firstRectW - ( validRef ? LOCK_BUTTON_WIDTH : 0 ) );
+		property.DebugWatcherField<T>( fieldArea.RequestRight( 22 ).CutRight( 2 ) );
 		var newValue = fieldArea.CutRight( 24 ).FieldOf<T>( label, oldValue );
 
 		EditorGUI.EndDisabledGroup();
-		if( validRef && IconButton.Draw( area.RequestLeft( firstRectW + 24 ).RequestRight( LOCK_BUTTON_WIDTH ), _locked ? "lockOn" : "lockOff", _locked ? 'X' : 'O' ) ) _locked = !_locked;
+		if( validRef && IconButton.Draw( area.RequestLeft( firstRectW ).RequestRight( LOCK_BUTTON_WIDTH ), _locked ? "lockOn" : "lockOff", _locked ? 'X' : 'O' ) ) _locked = !_locked;
 		if( !newValue.Equals( oldValue ) )
 		{
 			property.TriggerMethod( BoolState.SET_METHOD_NAME, newValue );
