@@ -1,6 +1,6 @@
 # K10 SO Vars
 
-K!0 Unity ScriptableObject Variables
+K10 Unity ScriptableObject Variables
 
 ### Check out our main module repository [K10](https://github.com/k10czar/K10.git)
 
