@@ -14,4 +14,4 @@ Used on [**Relic Hunters Legend**](https://www.relichunters.com.br)
 
 #### The add the K10 SO-Vars Lib submodule
 
-``git submodule add https://github.com/k10czar/K10-K10-SOVars.git "Assets/Plugins/K10SOVars"``
+``git submodule add https://github.com/k10czar/K10-SOVars.git "Assets/Plugins/K10SOVars"``
