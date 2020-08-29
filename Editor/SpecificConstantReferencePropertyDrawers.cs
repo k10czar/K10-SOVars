@@ -1,7 +1,7 @@
 
 
-[UnityEditor.CustomPropertyDrawer( typeof( ByteConstantReference ) )]
-public class ByteConstantReferencePropertyDrawer : ConstantReferencePropertyDrawer<ByteConstantSO, byte> { }
+// [UnityEditor.CustomPropertyDrawer( typeof( ByteConstantReference ) )]
+// public class ByteConstantReferencePropertyDrawer : ConstantReferencePropertyDrawer<ByteConstantSO, byte> { }
 
 [UnityEditor.CustomPropertyDrawer( typeof( FloatConstantReference ) )]
 public class FloatConstantReferencePropertyDrawer : ConstantReferencePropertyDrawer<FloatConstantSO, float> { }
@@ -18,5 +18,5 @@ public class LongConstantReferencePropertyDrawer : ConstantReferencePropertyDraw
 [UnityEditor.CustomPropertyDrawer( typeof( StringConstantReference ) )]
 public class StringConstantReferencePropertyDrawer : ConstantReferencePropertyDrawer<StringConstantSO, string> { }
 
-[UnityEditor.CustomPropertyDrawer( typeof( UIntConstantReference ) )]
-public class UIntConstantReferencePropertyDrawer : ConstantReferencePropertyDrawer<UIntConstantSO, uint> { }
+// [UnityEditor.CustomPropertyDrawer( typeof( UIntConstantReference ) )]
+// public class UIntConstantReferencePropertyDrawer : ConstantReferencePropertyDrawer<UIntConstantSO, uint> { }

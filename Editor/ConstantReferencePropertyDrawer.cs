@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ConstantReferencePropertyDrawer<refT, T> : PropertyDrawer where refT : ConstantSO<T>
 {
-	protected virtual float VALUE_FIELD_WIDTH => 80;
+	protected virtual float VALUE_FIELD_WIDTH => 100;
+	protected virtual float MAX_SO_FIELD_WIDTH => 160;
 	protected const float LOCK_BUTTON_WIDTH = 16;
 	bool _locked = true;
 
@@ -18,6 +19,7 @@ public class ConstantReferencePropertyDrawer<refT, T> : PropertyDrawer where ref
 		if( validRef ) oldValue = refVar.Value;
 		EditorGUI.BeginDisabledGroup( validRef && _locked );
 		var firstRectW = EditorGUIUtility.labelWidth + VALUE_FIELD_WIDTH;
+		if( area.width - firstRectW > MAX_SO_FIELD_WIDTH ) firstRectW = area.width - MAX_SO_FIELD_WIDTH;
 
 		var fieldArea = area.RequestLeft( firstRectW - ( validRef ? LOCK_BUTTON_WIDTH : 0 ) );
 		var newValue = fieldArea.FieldOf<T>( label, oldValue );

@@ -2,9 +2,10 @@ using UnityEditor;
 using K10.EditorGUIExtention;
 using UnityEngine;
 
-public class VariableReferencePropertyDrawer<refT, T> : PropertyDrawer where refT : VariableSO<T> where T : struct
+public class VariableReferencePropertyDrawer<refT, T> : PropertyDrawer where refT : ValueVariableSO<T> where T : struct
 {
-	protected virtual float VALUE_FIELD_WIDTH => 80;
+	protected virtual float VALUE_FIELD_WIDTH => 100;
+	protected virtual float MAX_SO_FIELD_WIDTH => 160;
 	protected const float LOCK_BUTTON_WIDTH = 16;
 	bool _locked = true;
 
@@ -18,14 +19,15 @@ public class VariableReferencePropertyDrawer<refT, T> : PropertyDrawer where ref
 		var validRef = refVar != null;
 		if( validRef ) oldValue = refVar.Value;
 		EditorGUI.BeginDisabledGroup( validRef && _locked );
-		var firstRectW = EditorGUIUtility.labelWidth + VALUE_FIELD_WIDTH + 24;
+		var firstRectW = EditorGUIUtility.labelWidth + VALUE_FIELD_WIDTH + LOCK_BUTTON_WIDTH;
+		if( area.width - firstRectW > MAX_SO_FIELD_WIDTH ) firstRectW = area.width - MAX_SO_FIELD_WIDTH;
 
 		var fieldArea = area.RequestLeft( firstRectW - ( validRef ? LOCK_BUTTON_WIDTH : 0 ) );
-		property.DebugWatcherField<T>( fieldArea.RequestRight( 22 ).CutRight( 2 ) );
-		var newValue = fieldArea.CutRight( 24 ).FieldOf<T>( label, oldValue );
-
+		var newValue = fieldArea.CutRight( LOCK_BUTTON_WIDTH ).FieldOf<T>( label, oldValue );
 		EditorGUI.EndDisabledGroup();
-		if( validRef && IconButton.Draw( area.RequestLeft( firstRectW ).RequestRight( LOCK_BUTTON_WIDTH ), _locked ? "lockOn" : "lockOff", _locked ? 'X' : 'O' ) ) _locked = !_locked;
+		property.DebugWatcherField<T>( area.RequestLeft( firstRectW ).RequestRight( LOCK_BUTTON_WIDTH ) );
+
+		if( validRef && IconButton.Draw( fieldArea.RequestRight( LOCK_BUTTON_WIDTH ), _locked ? "lockOn" : "lockOff", _locked ? 'X' : 'O' ) ) _locked = !_locked;
 		if( !newValue.Equals( oldValue ) )
 		{
 			property.TriggerMethod( BoolState.SET_METHOD_NAME, newValue );
