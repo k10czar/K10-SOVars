@@ -1,0 +1,17 @@
+{
+    "name": "K10SOVarsEditor",
+    "references": [
+        "GUID:ce449c433e9d6de4c847116d2ffb9634",
+        "GUID:d12d6801382f9ad4392c8257d47edbb6",
+        "GUID:6ac568dd7a2af634895b6119885b2204"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
