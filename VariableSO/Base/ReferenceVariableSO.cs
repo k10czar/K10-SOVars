@@ -5,7 +5,7 @@ public abstract class ReferenceVariableSO<T> : ScriptableObject, ICachedReferenc
 	protected abstract ICachedReference<T> Reference { get; }
 
 	public T CurrentReference => Reference.CurrentReference;
-	public IEventRegister<T> OnReferenceSet => Reference.OnReferenceSet;
+	public IEventRegister<T,IEventValidator> OnReferenceSet => Reference.OnReferenceSet;
 	public IEventRegister<T> OnReferenceRemove => Reference.OnReferenceRemove;
 	public IEventValidator Validator => Reference.Validator;
 	public bool IsNull => Reference.IsNull;
@@ -29,7 +29,7 @@ public abstract class ReferenceVariableReference<refT, T> : ICachedReference<T> 
 	protected abstract ICachedReference<T> Reference { get; }
 
 	public T CurrentReference => Reference.CurrentReference;
-	public IEventRegister<T> OnReferenceSet => Reference.OnReferenceSet;
+	public IEventRegister<T,IEventValidator> OnReferenceSet => Reference.OnReferenceSet;
 	public IEventRegister<T> OnReferenceRemove => Reference.OnReferenceRemove;
 	public IEventValidator Validator => Reference.Validator;
 	public bool IsNull => Reference.IsNull;
