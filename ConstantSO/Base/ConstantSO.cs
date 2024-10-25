@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class ConstantSO<T> : ScriptableObject
+public abstract class ConstantSO<T> : ScriptableObject, IValueProvider<T>
 {
 	[SerializeField] T _value;
 	public T Value => _value;
